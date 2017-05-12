@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 public class HomeController {
 
@@ -16,7 +18,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    String home() {
+    String home() throws IOException {
         return homeService.home();
     }
 }

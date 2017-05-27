@@ -32,8 +32,7 @@ run {
     dependsOn installDist
 
     jvmArgs = [
-            "-javaagent:agents/codekvast-javaagent-0.19.0-all.jar",
-            "-javaagent:agents/aspectjweaver-1.8.10.jar",
-            "-Djava.ext.dirs=agents"
+            "-javaagent:agent/codekvast-javaagent-0.20.0-all.jar",
+            "-Djava.ext.dirs=agent"
     ]
 }

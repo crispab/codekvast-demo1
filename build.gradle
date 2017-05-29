@@ -26,3 +26,18 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+//--- Changes to make it work with Codekvast
+
+apply plugin: 'application'
+bootRepackage {
+    enabled = false
+}
+
+build.dependsOn installDist
+
+def codekvastAgent='codekvast/agent/codekvast-javaagent-0.20.0-all.jar'
+applicationDefaultJvmArgs = [
+        "-Xbootclasspath/a:$codekvastAgent",
+        "-javaagent:$codekvastAgent"
+]

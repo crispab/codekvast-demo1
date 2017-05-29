@@ -9,7 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+
 @Controller
+@RequestMapping(method = GET)
 public class HomeController {
 
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -24,7 +27,7 @@ public class HomeController {
         this.buttonTwoService = buttonTwoService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = GET)
     String home()  {
         logger.info("Welcome home.");
         return "/home.html";

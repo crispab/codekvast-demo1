@@ -20,3 +20,7 @@
 .idea/**/libraries
 
 out/
+.env
+.gradle
+build
+*.iml

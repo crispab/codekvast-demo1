@@ -3,6 +3,9 @@
 .idea/**/tasks.xml
 .idea/dictionaries
 
+# Gradle generated stuff:
+.idea/modules/
+
 # Sensitive or high-churn files:
 .idea/**/dataSources/
 .idea/**/dataSources.ids
@@ -15,11 +18,5 @@
 # Gradle:
 .idea/**/gradle.xml
 .idea/**/libraries
-.idea/modules/
-.idea/modules.xml
 
-*.iml
-.gradle/
 out/
-build/
-.env

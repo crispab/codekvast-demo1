@@ -15,3 +15,10 @@
 # Gradle:
 .idea/**/gradle.xml
 .idea/**/libraries
+.idea/modules/
+.idea/modules.xml
+
+*.iml
+.gradle/
+out/
+build/

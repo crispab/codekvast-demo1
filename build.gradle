@@ -41,3 +41,7 @@ applicationDefaultJvmArgs = [
         "-Xbootclasspath/a:$codekvastAgent",
         "-javaagent:$codekvastAgent"
 ]
+
+// Make Heroku do the right thing...
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean

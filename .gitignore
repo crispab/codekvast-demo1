@@ -24,3 +24,4 @@ out/
 .gradle
 build
 *.iml
+.idea/libraries/

@@ -28,12 +28,12 @@ dependencies {
 
 //--- Changes to make it work with Codekvast
 
-def codekvastVersion='0.20.0'
+def codekvastVersion='0.20.1'
 def newrelicVersion='3.39.0'
 
 configurations { javaagent }
 dependencies {
-    javaagent "io.codekvast:codekvast-agent:$codekvastVersion:all"
+    javaagent "io.codekvast:codekvast-agent:$codekvastVersion"
     javaagent "com.newrelic.agent.java:newrelic-agent:$newrelicVersion"
 }
 
@@ -49,7 +49,7 @@ apply plugin: 'application'
 applicationDistribution.from(configurations.javaagent) {
     into 'javaagent'
 }
-def codekvastAgent="build/install/${rootProject.name}/javaagent/codekvast-agent-${codekvastVersion}-all.jar"
+def codekvastAgent="build/install/${rootProject.name}/javaagent/codekvast-agent-${codekvastVersion}.jar"
 def newrelicAgent="build/install/${rootProject.name}/javaagent/newrelic-agent-${newrelicVersion}.jar"
 
 applicationDefaultJvmArgs = [

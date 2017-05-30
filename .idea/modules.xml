@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codekvast-spring.iml" filepath="$PROJECT_DIR$/.idea/modules/codekvast-spring.iml" />
       <module fileurl="file://$PROJECT_DIR$/codekvast-spring.iml" filepath="$PROJECT_DIR$/codekvast-spring.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/codekvast-spring_main.iml" filepath="$PROJECT_DIR$/.idea/modules/codekvast-spring_main.iml" group="codekvast-spring" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/codekvast-spring_test.iml" filepath="$PROJECT_DIR$/.idea/modules/codekvast-spring_test.iml" group="codekvast-spring" />

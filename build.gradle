@@ -18,9 +18,8 @@ version = '1.0.0'
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
-
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
@@ -29,19 +28,25 @@ dependencies {
 
 //--- Changes to make it work with Codekvast
 
+configurations {
+    codekvastagent
+}
+
+dependencies {
+    codekvastagent 'io.codekvast:codekvast-agent:0.20.0:all'
+}
+
 apply plugin: 'application'
 bootRepackage {
     enabled = false
 }
 
-build.dependsOn installDist
-
-def codekvastAgent='codekvast/agent/codekvast-javaagent-0.20.0-all.jar'
+def codekvastAgent=configurations.codekvastagent.asPath
 applicationDefaultJvmArgs = [
         "-Xbootclasspath/a:$codekvastAgent",
         "-javaagent:$codekvastAgent"
 ]
 
-// Make Heroku do the right thing...
-task stage(dependsOn: ['build', 'clean'])
+// Make Heroku do the right thing instead of the standard Spring Boot buildpack stuff...
+task stage(dependsOn: ['clean', 'build', 'installDist'])
 build.mustRunAfter clean

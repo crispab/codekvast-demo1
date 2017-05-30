@@ -1,12 +1,9 @@
 buildscript {
-    ext {
-        springBootVersion = '1.5.3.RELEASE'
-    }
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
     }
 }
 
@@ -17,16 +14,16 @@ apply plugin: 'org.springframework.boot'
 version = '1.0.0'
 sourceCompatibility = 1.8
 
-repositories {
-    jcenter()
-}
-
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
-//--- Changes to make it work with Codekvast
+//--- Changes to make it work with Codekvast and New Relic
+
+repositories {
+    jcenter() // Required to find codekvast-agent
+}
 
 def codekvastVersion='0.20.1'
 def newrelicVersion='3.39.0'
@@ -39,7 +36,7 @@ dependencies {
 
 bootRepackage {
     // Run the app as an ordinary Gradle application instead of an executable Spring Boot jar or else
-    // Codekvast won't find anything. (It does not yet understand Spring Boot's proprietary über-jar format)
+    // Codekvast won't find anything. (It does not yet understand Spring Boot's proprietary nested jar format)
     enabled = false
 }
 
@@ -58,6 +55,6 @@ applicationDefaultJvmArgs = [
         "-javaagent:$newrelicAgent"
 ]
 
-// Make Heroku do the right thing instead of the standard Spring Boot buildpack stuff...
+// Override the default Gradle buildpack stuff...
 task stage(dependsOn: ['clean', 'build', 'installDist'])
 build.mustRunAfter clean

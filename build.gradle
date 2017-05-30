@@ -29,8 +29,13 @@ dependencies {
 //--- Changes to make it work with Codekvast
 
 def codekvastVersion='0.20.0'
-configurations { codekvast }
-dependencies { codekvast "io.codekvast:codekvast-agent:$codekvastVersion:all" }
+def newrelicVersion='3.39.0'
+
+configurations { javaagent }
+dependencies {
+    javaagent "io.codekvast:codekvast-agent:$codekvastVersion:all"
+    javaagent "com.newrelic.agent.java:newrelic-agent:$newrelicVersion"
+}
 
 bootRepackage {
     // Run the app as an ordinary Gradle application instead of an executable Spring Boot jar or else
@@ -40,13 +45,17 @@ bootRepackage {
 
 apply plugin: 'application'
 
-// Download codekvast-agent.jar to a well-known location...
-applicationDistribution.from(configurations.codekvast) { into 'codekvast' }
-def codekvastAgent="build/install/${rootProject.name}/codekvast/codekvast-agent-${codekvastVersion}-all.jar"
+// Download javaagents to a well-known location...
+applicationDistribution.from(configurations.javaagent) {
+    into 'javaagent'
+}
+def codekvastAgent="build/install/${rootProject.name}/javaagent/codekvast-agent-${codekvastVersion}-all.jar"
+def newrelicAgent="build/install/${rootProject.name}/javaagent/newrelic-agent-${newrelicVersion}.jar"
 
 applicationDefaultJvmArgs = [
         "-Xbootclasspath/a:$codekvastAgent",
-        "-javaagent:$codekvastAgent"
+        "-javaagent:$codekvastAgent",
+        "-javaagent:$newrelicAgent"
 ]
 
 // Make Heroku do the right thing instead of the standard Spring Boot buildpack stuff...

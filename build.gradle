@@ -14,53 +14,11 @@ apply plugin: 'org.springframework.boot'
 version = '1.0.0'
 sourceCompatibility = 1.8
 
-dependencies {
-    compileOnly 'org.projectlombok:lombok:1.16.18'
-
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
-
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
-}
-
-//--- Changes to make it work with Codekvast and New Relic
-
 repositories {
-    jcenter() // Required to find codekvast-agent
+    jcenter()
 }
 
-def codekvastVersion='0.21.4'
-def newrelicVersion='3.39.0'
-
-configurations { javaagent }
 dependencies {
-    javaagent "io.codekvast:codekvast-agent:$codekvastVersion"
-    javaagent "com.newrelic.agent.java:newrelic-agent:$newrelicVersion"
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
-
-bootRepackage {
-    // Run the app as an ordinary Gradle application instead of an executable Spring Boot jar or else
-    // Codekvast won't find anything. (It does not yet understand Spring Boot's proprietary nested jar format)
-    enabled = false
-}
-
-apply plugin: 'application'
-mainClassName = 'io.codekvast.sample1.CodekvastSampleApplication'
-
-// Download javaagents to a well-known location...
-applicationDistribution.from(configurations.javaagent) {
-    into 'javaagent'
-}
-def codekvastAgent="build/install/${rootProject.name}/javaagent/codekvast-agent-${codekvastVersion}.jar"
-def newrelicAgent="build/install/${rootProject.name}/javaagent/newrelic-agent-${newrelicVersion}.jar"
-
-applicationDefaultJvmArgs = [
-        "-Xbootclasspath/a:$codekvastAgent",
-        "-javaagent:$codekvastAgent",
-        // "-javaagent:$newrelicAgent"
-]
-
-// Override the default Gradle buildpack stuff...
-task stage(dependsOn: ['clean', 'build', 'installDist'])
-build.mustRunAfter clean

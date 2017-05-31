@@ -1,1 +1,1 @@
-web: env SERVER_PORT=$PORT build/install/codekvast-sample1/bin/codekvast-sample1
+web: env SERVER_PORT=$PORT java $JAVA_OPTS -jar build/libs/*.jar

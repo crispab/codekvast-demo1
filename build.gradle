@@ -25,7 +25,7 @@ repositories {
     jcenter() // Required to find codekvast-agent
 }
 
-def codekvastVersion='0.21.0'
+def codekvastVersion='0.21.2'
 def newrelicVersion='3.39.0'
 
 configurations { javaagent }

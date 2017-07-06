@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -41,6 +42,12 @@ public class SsoController {
 
     public SsoController() throws NoSuchAlgorithmException {
         this.sha1 = MessageDigest.getInstance("SHA-1");
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        logger.info("Will use '{}' as herokuId", herokuId);
+        logger.info("Will use '{}' as codekvastUrl", codekvastUrl);
     }
 
     @RequestMapping(path = "/openCodekvastDashboard", method = {GET, POST})

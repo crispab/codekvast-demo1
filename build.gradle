@@ -57,7 +57,7 @@ def newrelicAgent="build/install/${rootProject.name}/javaagent/newrelic-agent-${
 applicationDefaultJvmArgs = [
         "-Xbootclasspath/a:$codekvastAgent",
         "-javaagent:$codekvastAgent",
-        "-javaagent:$newrelicAgent"
+        // "-javaagent:$newrelicAgent"
 ]
 
 // Override the default Gradle buildpack stuff...

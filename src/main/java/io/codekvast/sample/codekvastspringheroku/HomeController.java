@@ -1,30 +1,30 @@
 package io.codekvast.sample.codekvastspringheroku;
 
-import io.codekvast.sample.codekvastspringheroku.button.one.ButtonOneService;
-import io.codekvast.sample.codekvastspringheroku.button.two.ButtonTwoService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import io.codekvast.sample.codekvastspringheroku.button.button1.ButtonOneService;
+import io.codekvast.sample.codekvastspringheroku.button.button2.ButtonTwoService;
+import io.codekvast.sample.codekvastspringheroku.button.button3.ButtonThreeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @RequestMapping(method = GET)
+@Slf4j
 public class HomeController {
-
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
     private final ButtonOneService buttonOneService;
     private final ButtonTwoService buttonTwoService;
+    private final ButtonThreeService buttonThreeService;
 
     @Autowired
     public HomeController(ButtonOneService buttonOneService,
-                          ButtonTwoService buttonTwoService) {
+                          ButtonTwoService buttonTwoService,
+                          ButtonThreeService buttonThreeService) {
         this.buttonOneService = buttonOneService;
         this.buttonTwoService = buttonTwoService;
+        this.buttonThreeService = buttonThreeService;
     }
 
     @RequestMapping(value = "/", method = GET)
@@ -43,6 +43,12 @@ public class HomeController {
     String buttonTwo() {
         buttonTwoService.doSomething();
         return "/buttonTwo.html";
+    }
+
+    @RequestMapping("/button3")
+    String buttonThree() {
+        // This feature has been disabled: buttonThreeService.doSomething();
+        return "/buttonThree.html";
     }
 }
 

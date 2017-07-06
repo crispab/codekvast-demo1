@@ -15,8 +15,11 @@ version = '1.0.0'
 sourceCompatibility = 1.8
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compileOnly 'org.projectlombok:lombok:1.16.18'
+
+    compile 'org.springframework.boot:spring-boot-starter-web'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
 //--- Changes to make it work with Codekvast and New Relic
@@ -41,6 +44,7 @@ bootRepackage {
 }
 
 apply plugin: 'application'
+mainClassName = 'io.codekvast.sample.codekvastspringheroku.CodekvastSampleApplication'
 
 // Download javaagents to a well-known location...
 applicationDistribution.from(configurations.javaagent) {

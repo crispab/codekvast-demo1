@@ -23,3 +23,7 @@
     margin: 1px;
     font-size: larger;
 }
+
+.buttonActive {
+    background-color: lightblue;
+}

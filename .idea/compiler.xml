@@ -5,8 +5,8 @@
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="codekvast-spring_main" target="1.8" />
-      <module name="codekvast-spring_test" target="1.8" />
+      <module name="codekvast-sample1_main" target="1.8" />
+      <module name="codekvast-sample1_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

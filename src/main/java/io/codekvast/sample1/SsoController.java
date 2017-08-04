@@ -1,5 +1,6 @@
-package io.codekvast.sample.codekvastspringheroku;
+package io.codekvast.sample1;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
 import static javax.xml.bind.DatatypeConverter.printHexBinary;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -35,8 +38,8 @@ public class SsoController {
     @Value("${app.herokuId}")
     private String herokuId;
 
-    @Value("${app.herokuNavData}")
-    private String herokuNavData;
+    @Value("${app.herokuAppName}")
+    private String herokuAppName;
 
     private MessageDigest sha1;
 
@@ -76,7 +79,7 @@ public class SsoController {
                 .add("id", herokuId)
                 .add("timestamp", String.format("%d", timestampSeconds))
                 .add("token", makeHerokuSsoToken(timestampSeconds))
-                .add("nav-data", herokuNavData)
+                .add("nav-data", makeHerokuNavData(herokuAppName))
                 .add("email", email)
                 .build();
 
@@ -84,6 +87,12 @@ public class SsoController {
                 .url(String.format("%s/heroku/sso/", codekvastUrl))
                 .post(body)
                 .build();
+    }
+
+    @SneakyThrows(UnsupportedEncodingException.class)
+    private String makeHerokuNavData(String appName) {
+        // A realistic navData JSON object contains a lot more fields. Codekvast is however only using the appname field.
+        return Base64.getEncoder().withoutPadding().encodeToString(String.format("{\"appname\": \"%s\"}", appName).getBytes("UTF-8"));
     }
 
     private String makeHerokuSsoToken(long timestampSeconds) {

@@ -1,4 +1,4 @@
-package io.codekvast.sample.codekvastspringheroku;
+package io.codekvast.sample1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

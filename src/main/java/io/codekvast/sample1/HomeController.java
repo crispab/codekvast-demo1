@@ -1,8 +1,8 @@
-package io.codekvast.sample.codekvastspringheroku;
+package io.codekvast.sample1;
 
-import io.codekvast.sample.codekvastspringheroku.button.button1.ButtonOneService;
-import io.codekvast.sample.codekvastspringheroku.button.button2.ButtonTwoService;
-import io.codekvast.sample.codekvastspringheroku.button.button3.ButtonThreeService;
+import io.codekvast.sample1.button.button1.ButtonOneService;
+import io.codekvast.sample1.button.button2.ButtonTwoService;
+import io.codekvast.sample1.button.button3.ButtonThreeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

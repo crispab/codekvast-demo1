@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codekvast-spring.iml" filepath="$PROJECT_DIR$/.idea/modules/codekvast-spring.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codekvast-spring_main.iml" filepath="$PROJECT_DIR$/.idea/modules/codekvast-spring_main.iml" group="codekvast-spring" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codekvast-spring_test.iml" filepath="$PROJECT_DIR$/.idea/modules/codekvast-spring_test.iml" group="codekvast-spring" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codekvast-sample1.iml" filepath="$PROJECT_DIR$/.idea/modules/codekvast-sample1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codekvast-sample1_main.iml" filepath="$PROJECT_DIR$/.idea/modules/codekvast-sample1_main.iml" group="codekvast-sample1" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codekvast-sample1_test.iml" filepath="$PROJECT_DIR$/.idea/modules/codekvast-sample1_test.iml" group="codekvast-sample1" />
     </modules>
   </component>
 </project>

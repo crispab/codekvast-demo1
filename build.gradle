@@ -45,7 +45,7 @@ bootRepackage {
 }
 
 apply plugin: 'application'
-mainClassName = 'io.codekvast.sample.codekvastspringheroku.CodekvastSampleApplication'
+mainClassName = 'io.codekvast.sample1.CodekvastSampleApplication'
 
 // Download javaagents to a well-known location...
 applicationDistribution.from(configurations.javaagent) {

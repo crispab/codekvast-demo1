@@ -1,4 +1,4 @@
-package io.codekvast.sample.codekvastspringheroku.button.button2;
+package io.codekvast.sample1.button.button2;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

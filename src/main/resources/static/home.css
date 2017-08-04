@@ -8,6 +8,7 @@
 .headbar {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .navbar {
@@ -22,4 +23,8 @@
     padding: 0.5em;
     margin: 1px;
     font-size: larger;
+}
+
+.buttonActive {
+    background-color: lightblue;
 }

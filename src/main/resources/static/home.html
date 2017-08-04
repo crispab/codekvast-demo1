@@ -9,16 +9,30 @@
 <div class="container">
     <div class="headbar">
         <h1>Welcome to Codekvast Spring Boot Sample</h1>
+        <form id="codekvastForm" action="/openCodekvastDashboard" method="post" target="_blank">
+            <fieldset>
+                <legend>Open Codekvast Warehouse</legend>
+                <label for="email">Your email address:</label><input id="email" name="email" type="email">
+                <input type="submit" value="Go">
+            </fieldset>
+        </form>
     </div>
     <div>
         <nav class="navbar">
+            <div class="likeButton buttonActive" onclick="window.location.href='/'">
+                Home
+            </div>
             <div class="likeButton" onclick="window.location.href='/button1'">
                 Button 1
             </div>
             <div class="likeButton" onclick="window.location.href='/button2'">
                 Button 2
             </div>
+            <div class="likeButton" onclick="window.location.href='/button3'">
+                Button 3
+            </div>
         </nav>
+
     </div>
 </div>
 </body>

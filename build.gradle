@@ -19,6 +19,10 @@ repositories {
 }
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compileOnly 'org.projectlombok:lombok:1.16.18'
+
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

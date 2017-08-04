@@ -28,3 +28,15 @@
 .buttonActive {
     background-color: lightblue;
 }
+
+#codekvastForm {
+    width: 60em;
+    margin-top: 5em;
+    margin-left: 4em;
+}
+
+code.terminal {
+    background-color: darkgrey;
+    color: white;
+    padding: 0.2em;
+}

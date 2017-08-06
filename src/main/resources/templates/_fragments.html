@@ -5,31 +5,37 @@
 <div th:fragment="head(page)">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title th:text="'Codekvast Sample1 - ' + ${page}">Codekvast Sample1</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/home.css}"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </div>
 
-<div th:fragment="navigation(headerText, page)">
-    <div class="container">
-        <div class="headbar">
-            <h1 th:text="${headerText}">Header text</h1>
+<div th:fragment="navigation(page)">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="@{/}">CodekvastSample1</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li th:class="${page.equals('home')}? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/}">Home <span th:if="${page.equals('home')}" class="sr-only">(current)</span></a>
+                </li>
+                <li th:class="${page.equals('button1')}? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/button1}">Button1 <span th:if="${page.equals('button1')}" class="sr-only">(current)</span></a>
+                </li>
+                <li th:class="${page.equals('button2')}? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/button2}">Button2 <span th:if="${page.equals('button2')}" class="sr-only">(current)</span></a>
+                </li>
+                <li th:class="${page.equals('button3')}? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/button3}">Button3 <span th:if="${page.equals('button3')}" class="sr-only">(current)</span></a>
+                </li>
+            </ul>
         </div>
-        <div>
-            <nav class="navbar">
-                <div th:class="${page.equals('home')}? 'likeButton buttonActive' : 'likeButton'" onclick="window.location.href='/'">
-                    Home
-                </div>
-                <div th:class="${page.equals('button1')}? 'likeButton buttonActive' : 'likeButton'" onclick="window.location.href='/button1'">
-                    Button 1
-                </div>
-                <div th:class="${page.equals('button2')}? 'likeButton buttonActive' : 'likeButton'" onclick="window.location.href='/button2'">
-                    Button 2
-                </div>
-                <div th:class="${page.equals('button3')}? 'likeButton buttonActive' : 'likeButton'" onclick="window.location.href='/button3'">
-                    Button 3
-                </div>
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
 
 </body>

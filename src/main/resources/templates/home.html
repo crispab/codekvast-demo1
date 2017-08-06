@@ -1,31 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="_fragments::head (page=home)"></div>
+    <title th:replace="_fragments::head (page=home)">SampleApp1</title>
 </head>
 <body>
-<div class="container">
-    <div class="headbar">
-        <h1>Welcome to Codekvast Sample1</h1>
-    </div>
-    <div>
-        <nav class="navbar">
-            <div class="likeButton buttonActive" onclick="window.location.href='/'">
-                Home
-            </div>
-            <div class="likeButton" onclick="window.location.href='/button1'">
-                Button 1
-            </div>
-            <div class="likeButton" onclick="window.location.href='/button2'">
-                Button 2
-            </div>
-            <div class="likeButton" onclick="window.location.href='/button3'">
-                Button 3
-            </div>
-        </nav>
-
-    </div>
-</div>
+<div th:replace="_fragments::navigation (headerText='Welcome to Codekvast Sample1', page='home')"></div>
 
 <form id="codekvastForm" action="/openCodekvastDashboard" method="post" target="_blank">
     <fieldset>

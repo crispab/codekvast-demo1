@@ -1,13 +1,35 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-
 <body>
 
 <div th:fragment="head(page)">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title th:text="'Codekvast Sample1 - ' + ${page}">Codekvast Sample1</title>
     <link rel="stylesheet" type="text/css" th:href="@{/home.css}"/>
+</div>
+
+<div th:fragment="navigation(headerText, page)">
+    <div class="container">
+        <div class="headbar">
+            <h1 th:text="${headerText}">Header text</h1>
+        </div>
+        <div>
+            <nav class="navbar">
+                <div th:class="${page.equals('home')}? 'likeButton buttonActive' : 'likeButton'" onclick="window.location.href='/'">
+                    Home
+                </div>
+                <div th:class="${page.equals('button1')}? 'likeButton buttonActive' : 'likeButton'" onclick="window.location.href='/button1'">
+                    Button 1
+                </div>
+                <div th:class="${page.equals('button2')}? 'likeButton buttonActive' : 'likeButton'" onclick="window.location.href='/button2'">
+                    Button 2
+                </div>
+                <div th:class="${page.equals('button3')}? 'likeButton buttonActive' : 'likeButton'" onclick="window.location.href='/button3'">
+                    Button 3
+                </div>
+            </nav>
+        </div>
+    </div>
 </div>
 
 </body>

@@ -6,7 +6,9 @@ import io.codekvast.sample1.button.button3.ButtonThreeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -28,27 +30,26 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/", method = GET)
-    String home()  {
+    String home() {
         logger.info("Welcome home.");
-        return "/home.html";
+        return "home";
     }
 
     @RequestMapping("/button1")
     String buttonOne() {
         buttonOneService.doSomething();
-        return "/buttonOne.html";
+        return "buttonOne";
     }
 
     @RequestMapping("/button2")
     String buttonTwo() {
         buttonTwoService.doSomething();
-        return "/buttonTwo.html";
+        return "buttonTwo";
     }
 
     @RequestMapping("/button3")
     String buttonThree() {
         // This feature has been disabled: buttonThreeService.doSomething();
-        return "/buttonThree.html";
+        return "buttonThree";
     }
 }
-

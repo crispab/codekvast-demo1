@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>The Button One</title>
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <div th:replace="_fragments::head (page=button2)"></div>
 </head>
 <body>
-<div class="container" style="background-color: mediumpurple">
+<div class="container" style="background-color: chartreuse">
     <div class="headbar">
-        <h1>This is the Button Three page.</h1>
+        <h1>This is the Button Two page.</h1>
     </div>
     <div>
         <nav class="navbar">
@@ -18,10 +16,10 @@
             <div class="likeButton" onclick="window.location.href='/button1'">
                 Button 1
             </div>
-            <div class="likeButton" onclick="window.location.href='/button2'">
+            <div class="likeButton buttonActive" onclick="window.location.href='/button2'">
                 Button 2
             </div>
-            <div class="likeButton buttonActive" onclick="window.location.href='/button3'">
+            <div class="likeButton" onclick="window.location.href='/button3'">
                 Button 3
             </div>
         </nav>

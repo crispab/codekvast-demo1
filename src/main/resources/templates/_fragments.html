@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="head(page)">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title th:text="'Codekvast Sample1 - ' + ${page}">Codekvast Sample1</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/home.css}"/>
+</div>
+
+</body>
+</html>

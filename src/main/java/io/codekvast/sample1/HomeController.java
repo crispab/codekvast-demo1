@@ -40,13 +40,13 @@ public class HomeController {
     }
 
     @RequestMapping("/feature2")
-    String button2() {
+    String feature2() {
         feature2Service.doSomething();
         return "feature2";
     }
 
     @RequestMapping("/feature3")
-    String button3() {
+    String feature3() {
         // This feature has been disabled: button3Service.doSomething();
         return "feature3";
     }

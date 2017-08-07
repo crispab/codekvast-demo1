@@ -12,17 +12,17 @@
     <p class="card-text">The app is started with Codekvast Agent attached, which means that the invocations of the
         server-side code are tracked and uploaded to <a href="https://app.codekvast.io" target="_blank">Codekvast
             Warehouse</a>.</p>
-    <p class="card-text">Now I guess that you want to see what data Codekvast Agent is collecting?</p>
-    <p class="card-text">Normally, you do that by issuing <code class="terminal">heroku addons:open codekvast</code>
-        from your Heroku
-        app's development workspace (or from the Heroku dashboard).</p>
-    <p class="card-text">That will do a Single-Sign On (SSO) to <a href="https://app.codekvast.io" target="_blank">Codekvast
-        Warehouse</a> with your Heroku credentials, allowing you to browse the data for the instrumented app.</p>
-    <p class="card-text">For demonstration purposes, this sample app is able to perform the same SSO as Heroku. This
+    <p class="card-text">Now I guess that you want to see what data Codekvast Agent is collecting? Normally, you do that
+        by issuing <code class="terminal">heroku addons:open codekvast</code>
+        from your app's development workspace (or from the Heroku dashboard). That will do a Single-Sign On (SSO) to <a
+                href="https://app.codekvast.io" target="_blank">Codekvast
+            Warehouse</a> using your Heroku credentials, allowing you to browse the data for the instrumented app.</p>
+    <p class="card-text">For demonstration purposes, this sample app is able to perform the same SSO as Heroku.
+        This
         enables you to
-        immediately kick the tyres of Codekvast without having a Heroku app.</p>
+        immediately <em>kick the tyres of Codekvast without having a Heroku app!</em></p>
     <p class="card-text">Also for demonstration purposes, this sample app is configured with a very short collection
-        interval.</p>
+        interval (seconds instead of hours).</p>
     <hr/>
     <form class="form-inline" action="/openCodekvastDashboard" method="post" target="_blank">
         <div class="form-group">

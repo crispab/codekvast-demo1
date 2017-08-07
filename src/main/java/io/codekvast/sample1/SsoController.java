@@ -68,7 +68,7 @@ public class SsoController {
             logger.debug("Headers={}", response.headers());
             String location = response.header("Location");
 
-            logger.info("Redirecting to {}", location);
+            // logger.info("Redirecting to {}", location);
             return location;
         }
     }

@@ -17,7 +17,6 @@ sourceCompatibility = 1.8
 dependencies {
     compileOnly 'org.projectlombok:lombok:1.16.18'
 
-    compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
@@ -31,7 +30,7 @@ repositories {
     jcenter() // Required to find codekvast-agent
 }
 
-def codekvastVersion='0.21.3'
+def codekvastVersion='0.21.4'
 def newrelicVersion='3.39.0'
 
 configurations { javaagent }

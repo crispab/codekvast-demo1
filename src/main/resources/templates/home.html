@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:replace="_fragments::head (page=home)">SampleApp1</title>
+    <title th:replace="_fragments::head (feature='home')">SampleApp1</title>
 </head>
 <body>
-<div th:replace="_fragments::navigation (page='home')"></div>
-
-<div class="card">
-    <div class="card-block">
-        <h4 class="card-title">This is a simple Spring Boot app that is instrumented with Codekvast Agent</h4>
-        <p class="card-text">The app does not do anything useful.</p>
-        <p class="card-text">It contains a number of pages, each one served by a server-side service.</p>
-        <p class="card-text">The app is started with Codekvast Agent attached, which means that the invocations of the
+<div th:replace="_fragments::navigation (feature='home')"></div>
+<div class="jumbotron">
+    <h2>This is a simple Spring Boot app that is instrumented with Codekvast Agent</h2>
+    <p class="card-text">The app does not do anything useful.</p>
+    <p class="card-text">It contains a number of pages, each one served by a server-side service.</p>
+    <p class="card-text">The app is started with Codekvast Agent attached, which means that the invocations of the
         server-side code are tracked and uploaded to <a href="https://app.codekvast.io" target="_blank">Codekvast
-                Warehouse</a>.</p>
-        <p class="card-text">Now I guess that you want to see what data Codekvast Agent is collecting?</p>
-        <p class="card-text">Normally, you do that by issuing <code class="terminal">heroku addons:open codekvast</code>
-            from your Heroku
-            app's development workspace (or from the Heroku dashboard).</p>
-        <p class="card-text">That will do a Single-Sign On (SSO) to <a href="https://app.codekvast.io" target="_blank">Codekvast
-            Warehouse</a> with your Heroku credentials, allowing you to browse the data for the instrumented app.</p>
-        <p class="card-text">For demonstration purposes, this sample app is able to perform the same SSO as Heroku. This
-            enables you to
-            immediately kick the tyres of Codekvast without having a Heroku app.</p>
-        <p class="card-text">Also for demonstration purposes, this sample app is configured with a very short collection
-            interval.</p>
-    </div>
+            Warehouse</a>.</p>
+    <p class="card-text">Now I guess that you want to see what data Codekvast Agent is collecting?</p>
+    <p class="card-text">Normally, you do that by issuing <code class="terminal">heroku addons:open codekvast</code>
+        from your Heroku
+        app's development workspace (or from the Heroku dashboard).</p>
+    <p class="card-text">That will do a Single-Sign On (SSO) to <a href="https://app.codekvast.io" target="_blank">Codekvast
+        Warehouse</a> with your Heroku credentials, allowing you to browse the data for the instrumented app.</p>
+    <p class="card-text">For demonstration purposes, this sample app is able to perform the same SSO as Heroku. This
+        enables you to
+        immediately kick the tyres of Codekvast without having a Heroku app.</p>
+    <p class="card-text">Also for demonstration purposes, this sample app is configured with a very short collection
+        interval.</p>
+    <hr/>
+    <form class="form-inline" action="/openCodekvastDashboard" method="post" target="_blank">
+        <div class="form-group">
+            <label for="email">Your simulated Heroku user:</label>
+            <select id="email" name="email" class="form-control ml-2">
+                <option>john.doe@acme.org</option>
+                <option>jane.doe@acme.org</option>
+                <option>average.joe@super-duper-devshop.com</option>
+            </select>
+        </div>
+        <button class="btn btn-primary ml-2">Open Codekvast Warehouse</button>
+    </form>
 </div>
-<form action="/openCodekvastDashboard" method="post" target="_blank">
-    <div class="form-group">
-        <label for="email">Your simulated Heroku user:</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-               title="Simulate that you are logged in to Heroku as this user"/>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <button type="submit" class="btn btn-primary">Open Codekvast Warehouse</button>
-</form>
 </body>
 </html>

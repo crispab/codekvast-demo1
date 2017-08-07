@@ -54,7 +54,8 @@ public class SsoController {
     }
 
     @RequestMapping(path = "/openCodekvastDashboard", method = {GET, POST})
-    public String openCodekvastDashboard(@RequestParam(value = "email", required = false, defaultValue = "foo.bar@acme.com") String email) throws IOException {
+    public String openCodekvastDashboard(@RequestParam(value = "email") String email) throws IOException {
+        logger.info("Simulating 'heroku addons:open codekvast' for user '{}'", email);
         Request request = simulateHerokuAddonsOpen(email);
         return "redirect:" + performRequestAndFollowRedirect(request);
     }
@@ -67,7 +68,7 @@ public class SsoController {
             logger.debug("Headers={}", response.headers());
             String location = response.header("Location");
 
-            logger.info("Redirecting to {}", location);
+            // logger.info("Redirecting to {}", location);
             return location;
         }
     }

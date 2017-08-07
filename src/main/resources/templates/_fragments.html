@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="head(feature)">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title th:text="'Codekvast Sample1 - ' + ${feature}">Codekvast Sample1</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</div>
+
+<div th:fragment="navigation(feature)">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" th:href="@{/}">CodekvastSample1</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li th:class="${feature.equals('home')}? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/}">Home <span th:if="${feature.equals('home')}" class="sr-only">(current)</span></a>
+                </li>
+                <li th:class="${feature.equals('feature1')}? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/feature1}">Feature1 <span th:if="${feature.equals('feature1')}"
+                                                                              class="sr-only">(current)</span></a>
+                </li>
+                <li th:class="${feature.equals('feature2')}? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/feature2}">Feature2 <span th:if="${feature.equals('feature2')}"
+                                                                              class="sr-only">(current)</span></a>
+                </li>
+                <li th:class="${feature.equals('feature3')}? 'nav-item active' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/feature3}">Feature3 <span th:if="${feature.equals('feature3')}"
+                                                                              class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>

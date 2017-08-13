@@ -1,8 +1,8 @@
-package io.codekvast.sample1;
+package io.codekvast.demo1;
 
-import io.codekvast.sample1.feature1.Feature1Service;
-import io.codekvast.sample1.feature2.Feature2Service;
-import io.codekvast.sample1.feature3.Feature3Service;
+import io.codekvast.demo1.feature1.Feature1Service;
+import io.codekvast.demo1.feature2.Feature2Service;
+import io.codekvast.demo1.feature3.Feature3Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

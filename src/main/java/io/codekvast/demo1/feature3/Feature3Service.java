@@ -1,4 +1,4 @@
-package io.codekvast.sample1.feature3;
+package io.codekvast.demo1.feature3;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

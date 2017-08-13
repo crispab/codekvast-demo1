@@ -47,7 +47,7 @@ bootRepackage {
 }
 
 apply plugin: 'application'
-mainClassName = 'io.codekvast.sample1.CodekvastSampleApplication'
+mainClassName = 'io.codekvast.demo1.CodekvastDemoApplication'
 
 // Download javaagents to a well-known location...
 applicationDistribution.from(configurations.javaagent) {

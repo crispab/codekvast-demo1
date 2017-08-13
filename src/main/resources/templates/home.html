@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:replace="_fragments::head (feature='home')">SampleApp1</title>
+    <title th:replace="_fragments::head (feature='home')">DemoApp1</title>
 </head>
 <body>
 <div th:replace="_fragments::navigation (feature='home')"></div>
@@ -17,11 +17,11 @@
         from your app's development workspace (or from the Heroku dashboard). That will do a Single-Sign On (SSO) to <a
                 href="https://app.codekvast.io" target="_blank">Codekvast
             Warehouse</a> using your Heroku credentials, allowing you to browse the data for the instrumented app.</p>
-    <p class="card-text">For demonstration purposes, this sample app is able to perform the same SSO as Heroku.
+    <p class="card-text">For demonstration purposes, this app is able to perform the same SSO as Heroku.
         This
         enables you to
         immediately <em>kick the tyres of Codekvast without having a Heroku app!</em></p>
-    <p class="card-text">Also for demonstration purposes, this sample app is configured with a very short collection
+    <p class="card-text">Also for demonstration purposes, this app is configured with a very short collection
         interval (seconds instead of hours).</p>
     <hr/>
     <form class="form-inline" action="/openCodekvastDashboard" method="post" target="_blank">

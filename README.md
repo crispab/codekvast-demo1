@@ -1,5 +1,5 @@
-# codekvast-sample1
-Sample of using Codekvast on a Spring boot based app running in Heroku.
+# codekvast-demo1
+Demonstrates how to use Codekvast on a Spring boot based app running in Heroku.
 
 It illustrates a number of ways for building a Spring Boot app with
 Codekvast agent attached.

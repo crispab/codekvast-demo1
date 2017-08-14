@@ -1,8 +1,8 @@
-package io.codekvast.sample1;
+package io.codekvast.demo1;
 
-import io.codekvast.sample1.features.Feature1Service;
-import io.codekvast.sample1.features.Feature2Service;
-import io.codekvast.sample1.features.Feature3Service;
+import io.codekvast.demo1.feature1.Feature1Service;
+import io.codekvast.demo1.feature2.Feature2Service;
+import io.codekvast.demo1.feature3.Feature3Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,15 +13,15 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @Controller
 @RequestMapping(method = GET)
 @Slf4j
-public class HomeController {
+public class WebController {
     private final Feature1Service feature1Service;
     private final Feature2Service feature2Service;
     private final Feature3Service feature3Service;
 
     @Autowired
-    public HomeController(Feature1Service feature1Service,
-                          Feature2Service feature2Service,
-                          Feature3Service feature3Service) {
+    public WebController(Feature1Service feature1Service,
+                         Feature2Service feature2Service,
+                         Feature3Service feature3Service) {
         this.feature1Service = feature1Service;
         this.feature2Service = feature2Service;
         this.feature3Service = feature3Service;

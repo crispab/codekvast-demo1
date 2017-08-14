@@ -1,13 +1,13 @@
-package io.codekvast.sample1.features;
+package io.codekvast.demo1.feature3;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class Feature1Service {
+public class Feature3Service {
 
     public void doSomething() {
-        logger.info("Doing something 1");
+        logger.info("Doing something 3");
     }
 }

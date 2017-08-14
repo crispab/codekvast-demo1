@@ -1,4 +1,4 @@
-package io.codekvast.sample1;
+package io.codekvast.demo1;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

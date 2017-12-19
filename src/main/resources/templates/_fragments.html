@@ -4,6 +4,8 @@
 
 <th:block th:fragment="head(feature)">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
     <title th:text="'Codekvast Demo1 - ' + ${feature}">Codekvast Demo1</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
@@ -24,6 +26,7 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
+            Menu&nbsp;
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" th:href="@{/}">CodekvastDemo1</a>

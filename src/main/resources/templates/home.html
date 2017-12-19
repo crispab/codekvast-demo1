@@ -11,18 +11,20 @@
     <p class="card-text">It contains a number of pages, each one served by a server-side service.</p>
     <p class="card-text">The app is started with Codekvast Agent attached, which means that the invocations of the
         server-side code are tracked and uploaded to <a href="https://app.codekvast.io" target="_blank">Codekvast
-            Warehouse</a>.</p>
+            Dashboard</a>.</p>
     <p class="card-text">Now I guess that you want to see what data Codekvast Agent is collecting? Normally, you do that
         by issuing <code class="terminal">heroku addons:open codekvast</code>
         from your app's development workspace (or from the Heroku dashboard). That will do a Single-Sign On (SSO) to <a
                 href="https://app.codekvast.io" target="_blank">Codekvast
-            Warehouse</a> using your Heroku credentials, allowing you to browse the data for the instrumented app.</p>
+            Dashboard</a> using your Heroku credentials, allowing you to browse the data for the instrumented app.</p>
     <p class="card-text">For demonstration purposes, this app is able to perform the same SSO as Heroku.
         This
         enables you to
         immediately <em>kick the tyres of Codekvast without having a Heroku app!</em></p>
     <p class="card-text">Also for demonstration purposes, this app is configured with a very short collection
         interval (seconds instead of hours).</p>
+    <p class="text-danger font-weight-bold font-italic">Note that Codekvast Dashboard is designed for the desktop!
+    </p>
     <hr/>
     <form class="form-inline" action="/openCodekvastDashboard" method="post" target="_blank">
         <div class="form-group">
@@ -33,7 +35,7 @@
                 <option>average.joe@super-duper-devshop.com</option>
             </select>
         </div>
-        <button class="btn btn-primary ml-2">Open Codekvast Warehouse</button>
+        <button class="btn btn-primary ml-2">Open Codekvast Dashboard</button>
     </form>
 </div>
 <div th:replace="_fragments::google_analytics"></div>

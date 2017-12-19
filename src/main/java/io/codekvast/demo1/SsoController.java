@@ -20,7 +20,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
- * A controller that receives a request to to a Single Sign-On to Codekvast Warehouse, simulating
+ * A controller that receives a request to to a Single Sign-On to Codekvast Dashboard, simulating
  * that the user performs `heroku addons:open codekvast` or clicks on Codekvast in the Heroku Dashboard.
  *
  * @author olle.hallin@crisp.se
@@ -54,7 +54,7 @@ public class SsoController {
     }
 
     @RequestMapping(path = "/openCodekvastDashboard", method = {GET, POST})
-    public String openCodekvastDashboard(@RequestParam(value = "email") String email) throws IOException {
+    public String openCodekvastDashboard(@RequestParam(value = "email", required = false, defaultValue = "john.doe@acme.org") String email) throws IOException {
         logger.info("Simulating 'heroku addons:open codekvast' for user '{}'", email);
         Request request = simulateHerokuAddonsOpen(email);
         return "redirect:" + performRequestAndFollowRedirect(request);

@@ -71,8 +71,8 @@ public class SsoController {
             String location = response.header("Location");
 
             // Copy cookies...
-            String setCookie = response.header("Set-Cookie");
-            httpServletResponse.addHeader("Set-Cookie", setCookie);
+            String cookies = response.header("Set-Cookie");
+            httpServletResponse.addHeader("Cookie", cookies);
 
             // logger.info("Redirecting to {}", location);
             return location;

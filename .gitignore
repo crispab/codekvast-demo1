@@ -26,4 +26,3 @@ out/
 build
 *.iml
 .idea/libraries/
-.idea/modules.xml

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -54,19 +55,24 @@ public class SsoController {
     }
 
     @RequestMapping(path = "/openCodekvastDashboard", method = {GET, POST})
-    public String openCodekvastDashboard(@RequestParam(value = "email", required = false, defaultValue = "john.doe@acme.org") String email) throws IOException {
+    public String openCodekvastDashboard(@RequestParam(value = "email", required = false, defaultValue = "john.doe@acme.org") String email,
+                                         HttpServletResponse httpServletResponse) throws IOException {
         logger.info("Simulating 'heroku addons:open codekvast' for user '{}'", email);
         Request request = simulateHerokuAddonsOpen(email);
-        return "redirect:" + performRequestAndFollowRedirect(request);
+        return "redirect:" + performRequestCopyCookiesAndGetNewLocation(request, httpServletResponse);
     }
 
-    private String performRequestAndFollowRedirect(Request request) throws IOException {
+    private String performRequestCopyCookiesAndGetNewLocation(Request request, HttpServletResponse httpServletResponse) throws IOException {
         OkHttpClient httpClient = new OkHttpClient.Builder().followRedirects(false).build();
 
         try (Response response = httpClient.newCall(request).execute()) {
             logger.info("Response={}", response);
             logger.info("Headers={}", response.headers());
             String location = response.header("Location");
+
+            // Copy cookies...
+            String setCookie = response.header("Set-Cookie");
+            httpServletResponse.addHeader("Set-Cookie", setCookie);
 
             // logger.info("Redirecting to {}", location);
             return location;

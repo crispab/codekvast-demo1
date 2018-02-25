@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.List;
 
 import static javax.xml.bind.DatatypeConverter.printHexBinary;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -59,10 +60,10 @@ public class SsoController {
                                          HttpServletResponse httpServletResponse) throws IOException {
         logger.info("Simulating 'heroku addons:open codekvast' for user '{}'", email);
         Request request = simulateHerokuAddonsOpen(email);
-        return "redirect:" + performRequestCopyCookiesAndGetNewLocation(request, httpServletResponse);
+        return "redirect:" + performSsoRequestCopyCookiesAndGetNewLocation(request, httpServletResponse);
     }
 
-    private String performRequestCopyCookiesAndGetNewLocation(Request request, HttpServletResponse httpServletResponse) throws IOException {
+    private String performSsoRequestCopyCookiesAndGetNewLocation(Request request, HttpServletResponse finalResponse) throws IOException {
         OkHttpClient httpClient = new OkHttpClient.Builder().followRedirects(false).build();
 
         try (Response response = httpClient.newCall(request).execute()) {
@@ -70,11 +71,11 @@ public class SsoController {
             logger.info("Headers={}", response.headers());
 
             // Copy cookies...
-            String cookies = response.header("Set-Cookie");
-            logger.info("Cookies={}", cookies);
-
-            httpServletResponse.addHeader("Set-Cookie", cookies);
-            httpServletResponse.addHeader("Cookie", cookies);
+            List<String> cookies = response.headers("Set-Cookie");
+            for (String cookie : cookies) {
+                logger.info("Received cookie={}", cookie);
+                finalResponse.addHeader("Set-Cookie", cookie);
+            }
 
             String location = response.header("Location");
             logger.info("Redirecting to {}", location);

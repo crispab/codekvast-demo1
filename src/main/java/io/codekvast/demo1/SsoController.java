@@ -64,8 +64,8 @@ public class SsoController {
         OkHttpClient httpClient = new OkHttpClient.Builder().followRedirects(false).build();
 
         try (Response response = httpClient.newCall(request).execute()) {
-            logger.debug("Response={}", response);
-            logger.debug("Headers={}", response.headers());
+            logger.info("Response={}", response);
+            logger.info("Headers={}", response.headers());
             String location = response.header("Location");
 
             // logger.info("Redirecting to {}", location);

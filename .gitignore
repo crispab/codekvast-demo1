@@ -5,6 +5,7 @@
 
 # Gradle generated stuff:
 .idea/modules/
+.idea/modules.xml
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/

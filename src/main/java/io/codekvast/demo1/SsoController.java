@@ -68,13 +68,16 @@ public class SsoController {
         try (Response response = httpClient.newCall(request).execute()) {
             logger.info("Response={}", response);
             logger.info("Headers={}", response.headers());
-            String location = response.header("Location");
 
             // Copy cookies...
             String cookies = response.header("Set-Cookie");
+            logger.info("Cookies={}", cookies);
+
+            httpServletResponse.addHeader("Set-Cookie", cookies);
             httpServletResponse.addHeader("Cookie", cookies);
 
-            // logger.info("Redirecting to {}", location);
+            String location = response.header("Location");
+            logger.info("Redirecting to {}", location);
             return location;
         }
     }

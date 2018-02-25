@@ -6,6 +6,7 @@ import io.codekvast.demo1.feature3.Feature3Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -28,8 +29,13 @@ public class WebController {
     }
 
     @RequestMapping(value = "/", method = GET)
-    String home() {
+    String home(Model model) {
         logger.info("Welcome home.");
+        String dashboardTarget = System.getenv("CODEKVAST_TARGET_FRAME");
+        if (dashboardTarget == null) {
+            dashboardTarget = "_blank";
+        }
+        model.addAttribute("dashboardTarget", dashboardTarget);
         return "home";
     }
 

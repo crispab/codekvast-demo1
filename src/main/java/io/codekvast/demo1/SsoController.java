@@ -34,8 +34,8 @@ public class SsoController {
     @Value("${codekvast.herokuApiSsoSalt}")
     private String herokuApiSsoSalt;
 
-    @Value("${codekvast.url}")
-    private String codekvastUrl;
+    @Value("${codekvast.sso.url}")
+    private String codekvastSsoUrl;
 
     @Value("${app.herokuId}")
     private String herokuId;
@@ -52,7 +52,7 @@ public class SsoController {
     @PostConstruct
     public void postConstruct() {
         logger.info("Will use '{}' as herokuId", herokuId);
-        logger.info("Will use '{}' as codekvastUrl", codekvastUrl);
+        logger.info("Will use '{}' as codekvastSsoUrl", codekvastSsoUrl);
     }
 
     @RequestMapping(path = "/openCodekvastDashboard", method = {GET, POST})
@@ -95,7 +95,7 @@ public class SsoController {
                 .build();
 
         return new Request.Builder()
-                .url(String.format("%s/heroku/sso/", codekvastUrl))
+                .url(String.format("%s/heroku/sso/", codekvastSsoUrl))
                 .post(body)
                 .build();
     }

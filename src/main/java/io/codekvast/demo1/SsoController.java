@@ -56,30 +56,25 @@ public class SsoController {
     }
 
     @RequestMapping(path = "/openCodekvastDashboard", method = {GET, POST})
-    public String openCodekvastDashboard(@RequestParam(value = "email", required = false, defaultValue = "john.doe@acme.org") String email,
-                                         HttpServletResponse httpServletResponse) throws IOException {
+    public void openCodekvastDashboard(@RequestParam(value = "email", required = false, defaultValue = "john.doe@acme.org") String email,
+                                         HttpServletResponse response) throws IOException {
         logger.info("Simulating 'heroku addons:open codekvast' for user '{}'", email);
-        Request request = simulateHerokuAddonsOpen(email);
-        return "redirect:" + performSsoRequestCopyCookiesAndGetNewLocation(request, httpServletResponse);
+        Request ssoRequest = simulateHerokuAddonsOpen(email);
+        performSsoRequest(ssoRequest, response);
     }
 
-    private String performSsoRequestCopyCookiesAndGetNewLocation(Request request, HttpServletResponse finalResponse) throws IOException {
+    private void performSsoRequest(Request request, HttpServletResponse finalResponse) throws IOException {
         OkHttpClient httpClient = new OkHttpClient.Builder().followRedirects(false).build();
 
         try (Response response = httpClient.newCall(request).execute()) {
             logger.info("Response={}", response);
             logger.info("Headers={}", response.headers());
 
-            // Copy cookies...
-            List<String> cookies = response.headers("Set-Cookie");
-            for (String cookie : cookies) {
-                logger.info("Received cookie={}", cookie);
-                finalResponse.addHeader("Set-Cookie", cookie);
+            for (String name : response.headers().names()) {
+                String value = response.headers().get(name);
+                finalResponse.addHeader(name, value);
             }
-
-            String location = response.header("Location");
-            logger.info("Redirecting to {}", location);
-            return location;
+            finalResponse.setStatus(response.code());
         }
     }
 
